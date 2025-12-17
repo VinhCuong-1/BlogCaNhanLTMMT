@@ -246,9 +246,13 @@ body {
     padding: 0.5rem 0;
 }
 
-.navbar-menu a:hover,
-.navbar-menu a.active {
+.navbar-menu a:hover {
     color: var(--primary-color);
+}
+
+.navbar-menu a.active {
+    color: var(--primary-color) !important;
+    font-weight: 500;
 }
 
 .menu-separator {
@@ -1190,7 +1194,7 @@ body {
     background-color: var(--secondary-color);
     background-image: url('../images/falcons-footer.jpg');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: right;
     background-size: contain;
     color: rgba(255, 255, 255, 0.7);
     padding: 2rem 0;
@@ -1231,8 +1235,7 @@ body {
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-center;
-    gap: 1.5rem 45rem;
+    gap: 1.5rem 10rem;
     text-align: left;
 }
 
@@ -1263,6 +1266,19 @@ body {
 
 .footer-contact-item a {
     color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-hashtag {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-hashtag:hover {
+    color: var(--primary-color) !important;
+    text-decoration: underline;
 }
 
 @media (max-width: 600px) {

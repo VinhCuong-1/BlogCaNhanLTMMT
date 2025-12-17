@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
@@ -24,11 +25,11 @@
     <meta property="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
-    <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?v={{ now.Unix }}">
+    <link rel="stylesheet" href="{{ "css/prism.css" | relURL }}?v={{ now.Unix }}">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="{{ "css/main.css" | relURL }}" as="style">
+    <link rel="preload" href="{{ "css/main.css" | relURL }}?v={{ now.Unix }}" as="style">
     
     {{ block "head" . }}{{ end }}
 </head>
@@ -106,7 +107,17 @@
             <ul class="navbar-menu">
                 {{ range .Site.Menus.main }}
                 <li>
-                    <a href="{{ .URL }}" class="{{ if $.IsMenuCurrent "main" . }}active{{ end }}">{{ .Name }}</a>
+                    {{ $isActive := false }}
+                    {{ if eq .Identifier "home" }}
+                        {{ $isActive = $.IsHome }}
+                    {{ else if eq .Identifier "blog" }}
+                        {{ $isActive = or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $.Section "blog") }}
+                    {{ else if eq .Identifier "about" }}
+                        {{ $isActive = or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) (eq $.Section "about") }}
+                    {{ else }}
+                        {{ $isActive = or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+                    {{ end }}
+                    <a href="{{ .URL }}" class="{{ if $isActive }}active{{ end }}" data-menu-id="{{ .Identifier }}" data-menu-url="{{ .URL }}">{{ .Name }}</a>
                     {{ if not (eq .Identifier (index (last 1 $.Site.Menus.main) 0).Identifier) }}
                     <span class="menu-separator">/</span>
                     {{ end }}
@@ -181,6 +192,10 @@
                         </span>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">instagram.com/...</a>
                     </div>
+
+                    <div class="footer-contact-item">
+                        <a href="https://www.facebook.com/share/p/1Faz2D8tjP/" target="_blank" rel="noopener noreferrer" class="footer-hashtag">#savedonkplease</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,8 +208,8 @@
         </svg>
     </button>
 
-    <script src="{{ "js/main.js" | relURL }}"></script>
-    <script src="{{ "js/prism.js" | relURL }}"></script>
+    <script src="{{ "js/main.js" | relURL }}?v={{ now.Unix }}"></script>
+    <script src="{{ "js/prism.js" | relURL }}?v={{ now.Unix }}"></script>
     {{ block "scripts" . }}{{ end }}
 </body>
 </html>

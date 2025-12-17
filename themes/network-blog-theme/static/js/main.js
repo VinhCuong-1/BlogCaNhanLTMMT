@@ -46,14 +46,90 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add active class to current menu item
-    const currentPath = window.location.pathname;
-    const menuLinks = document.querySelectorAll('.navbar-menu a');
-    menuLinks.forEach(link => {
-        const linkPath = new URL(link.href).pathname;
-        if (linkPath === currentPath || (currentPath.startsWith(linkPath) && linkPath !== '/')) {
-            link.classList.add('active');
-        }
+    // Fix active menu item - ensure correct active state
+    function fixActiveMenu() {
+        const currentPath = window.location.pathname;
+        const normalizedCurrentPath = currentPath.replace(/\/$/, '') || '/';
+        const menuLinks = document.querySelectorAll('.navbar-menu a');
+        const menuId = link => link.getAttribute('data-menu-id');
+        
+        // Debug log
+        console.log('fixActiveMenu called, currentPath:', normalizedCurrentPath);
+        
+        menuLinks.forEach(link => {
+            try {
+                const linkUrl = new URL(link.href, window.location.origin);
+                const linkPath = linkUrl.pathname;
+                const normalizedLinkPath = linkPath.replace(/\/$/, '') || '/';
+                const id = menuId(link);
+                const hadActiveBefore = link.classList.contains('active');
+                
+                let shouldBeActive = false;
+                
+                // Case 1: We're on home page (exactly "/")
+                if (normalizedCurrentPath === '/') {
+                    // Only home link should be active
+                    if (id === 'home' && normalizedLinkPath === '/') {
+                        shouldBeActive = true;
+                    } else {
+                        // Remove active from non-home links
+                        link.classList.remove('active');
+                    }
+                }
+                // Case 2: We're on blog section
+                else if (normalizedCurrentPath.startsWith('/blog')) {
+                    // Only blog link should be active
+                    if (id === 'blog') {
+                        shouldBeActive = true;
+                    } else {
+                        // Remove active from non-blog links
+                        link.classList.remove('active');
+                    }
+                }
+                // Case 3: We're on about section
+                else if (normalizedCurrentPath.startsWith('/about')) {
+                    // Only about link should be active
+                    if (id === 'about') {
+                        shouldBeActive = true;
+                    } else {
+                        // Remove active from non-about links
+                        link.classList.remove('active');
+                    }
+                }
+                // Case 4: Exact path match (fallback)
+                else if (normalizedLinkPath === normalizedCurrentPath) {
+                    shouldBeActive = true;
+                } else {
+                    // Remove active if no match
+                    link.classList.remove('active');
+                }
+                
+                // Apply active class
+                if (shouldBeActive) {
+                    link.classList.add('active');
+                    console.log('Set active for:', id, link.textContent.trim());
+                } else if (hadActiveBefore) {
+                    console.log('Removed active from:', id, link.textContent.trim());
+                }
+            } catch (e) {
+                // Skip invalid URLs
+                console.warn('Error processing menu link:', e);
+            }
+        });
+    }
+    
+    // Run after DOM is ready - but wait a bit to let template render first
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(fixActiveMenu, 50);
+        });
+    } else {
+        setTimeout(fixActiveMenu, 50);
+    }
+    
+    // Run once more after page fully loads
+    window.addEventListener('load', function() {
+        setTimeout(fixActiveMenu, 100);
     });
 
     // Lazy load images
@@ -306,3 +382,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
