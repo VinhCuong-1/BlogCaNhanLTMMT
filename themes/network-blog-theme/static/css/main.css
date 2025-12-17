@@ -1215,6 +1215,18 @@ body {
     color: var(--primary-color);
 }
 
+.footer-contact-title {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: left;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 .footer-contacts {
     margin-top: 2rem;
     display: flex;
@@ -1254,6 +1266,10 @@ body {
 }
 
 @media (max-width: 600px) {
+    .footer-contact-title {
+        text-align: center;
+    }
+
     .footer-contacts {
         flex-direction: column;
         align-items: center;

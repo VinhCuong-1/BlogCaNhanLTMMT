@@ -2,7 +2,7 @@
 <div class="about-page">
     <div class="container">
         <div class="page-header">
-            <h1>Thông tin cá nhân</h1>
+            <h1>Thông Tin Cá Nhân</h1>
         </div>
 
         <div class="about-content">
@@ -21,7 +21,7 @@
             {{ end }}
 
             <div class="about-section">
-                <h2>Khóa học đã học</h2>
+                <h2>Khóa Học Đã Học</h2>
                 <div class="courses-grid">
                     <div class="course-card">
                         <h3>Java</h3>
@@ -47,7 +47,7 @@
 
             {{ if .Params.certificates }}
             <div class="about-section">
-                <h2>Chứng chỉ</h2>
+                <h2>Chứng Chỉ</h2>
                 <div class="image-gallery">
                     {{ range .Params.certificates }}
                     <div class="gallery-item">
@@ -66,7 +66,7 @@
 
             {{ if .Params.projects }}
             <div class="about-section">
-                <h2>Đồ án</h2>
+                <h2>Các Đồ Án Đã Hoàn Thành Và Đang Trong Quá Trình Thực Hiện</h2>
                 <div class="image-gallery projects-gallery">
                     {{ range .Params.projects }}
                     <div class="gallery-item project-item">
@@ -95,16 +95,6 @@
                 </div>
             </div>
             {{ end }}
-
-            <div class="about-section">
-                <h2>Liên hệ</h2>
-                <p>
-                    Bạn có thể tìm thấy tôi trên GitHub:
-                    <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer" class="github-link">
-                        {{ .Site.Params.github }}
-                    </a>
-                </p>
-            </div>
         </div>
     </div>
 </div>
