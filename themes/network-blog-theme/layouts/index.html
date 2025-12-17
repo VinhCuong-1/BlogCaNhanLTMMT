@@ -1,0 +1,109 @@
+{{ define "main" }}
+<div class="container">
+    <div class="layout-with-sidebar">
+        <!-- Main Content -->
+        <div class="main-column">
+            <!-- Featured Post -->
+            {{ $featured := first 1 (where .Site.RegularPages "Section" "blog") }}
+            {{ range $featured }}
+            <article class="featured-post">
+                <div class="featured-image">
+                    <div class="featured-overlay">
+                        <div class="featured-meta">
+                            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" | upper }}</time>
+                        </div>
+                        <h2 class="featured-title">
+                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </h2>
+                        <a href="{{ .Permalink }}" class="featured-btn">ĐỌC THÊM</a>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+
+            <!-- Blog Posts List -->
+            <section class="posts-section">
+                <h2 class="section-title">Bài viết gần đây</h2>
+                {{ range after 1 (where .Site.RegularPages "Section" "blog") }}
+                <article class="post-item">
+                    <div class="post-category">
+                        {{ range first 1 .Params.tags }}{{ . | upper }}{{ end }}
+                    </div>
+                    <h3 class="post-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    <div class="post-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" | upper }}</time>
+                        <span class="meta-sep">|</span>
+                        <span class="author">BY {{ $.Site.Params.author | upper }}</span>
+                    </div>
+                    {{ if .Params.image }}
+                    <div class="post-image">
+                        <a href="{{ .Permalink }}">
+                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                        </a>
+                    </div>
+                    {{ end }}
+                    <div class="post-excerpt">
+                        {{ if .Params.summary }}
+                        {{ .Params.summary }}
+                        {{ else }}
+                        {{ .Summary | plainify | truncate 200 }}
+                        {{ end }}
+                    </div>
+                    <a href="{{ .Permalink }}" class="read-more-link">Đọc thêm →</a>
+                </article>
+                {{ end }}
+            </section>
+
+            <div class="view-all-posts">
+                <a href="{{ "/blog/" | relURL }}" class="btn-view-all">XEM TẤT CẢ BÀI VIẾT</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- About Me Widget -->
+            <div class="widget widget-about">
+                <h4 class="widget-title">ABOUT ME</h4>
+                <div class="widget-content">
+                    <div class="about-avatar">
+                        <img src="{{ "images/avatar.jpg" | relURL }}" alt="{{ .Site.Params.author }}" onerror="this.style.display='none'">
+                    </div>
+                    <p class="about-text">
+                        Xin chào, tôi là <strong>{{ .Site.Params.author }}</strong>. {{ .Site.Params.description }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="widget widget-popular">
+                <h4 class="widget-title">POPULAR POSTS</h4>
+                <div class="widget-content">
+                    {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+                    <div class="popular-post">
+                        <div class="popular-post-content">
+                            <span class="popular-category">{{ range first 1 .Params.tags }}{{ . | upper }}{{ end }}</span>
+                            <h5><a href="{{ .Permalink }}">{{ .Title }}</a></h5>
+                            <time>{{ .Date.Format "January 02, 2006" }}</time>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="widget widget-tags">
+                <h4 class="widget-title">TAGS</h4>
+                <div class="widget-content">
+                    <div class="tag-cloud">
+                        {{ range .Site.Taxonomies.tags }}
+                        <a href="{{ .Page.Permalink }}" class="tag-item">{{ .Page.Title }}</a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+{{ end }}

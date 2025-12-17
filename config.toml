@@ -1,0 +1,35 @@
+baseURL = "https://vinhcuong-1.github.io/BlogCaNhanLTMMT/"
+languageCode = "vi"
+title = "Lập Trình Mạng Máy Tính - Blog Cá Nhân"
+theme = "network-blog-theme"
+defaultContentLanguage = "vi"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  author = "Vĩnh Cường"
+  description = "Đây là Blog cá nhân cho đồ án môn học Lập Trình Mạng Máy Tính"
+  github = "https://github.com/VinhCuong-1"
+  
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Trang Chủ"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "Thông tin cá nhân"
+    url = "/about/"
+    weight = 3
+
+[taxonomies]
+  tag = "tags"
+
+

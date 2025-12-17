@@ -1,0 +1,101 @@
+{{ define "main" }}
+<div class="about-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Thông tin cá nhân</h1>
+        </div>
+
+        <div class="about-content">
+            {{ if .Params.experience }}
+            <div class="about-section">
+                <h2>Kinh nghiệm</h2>
+                <ul class="experience-list">
+                    {{ range .Params.experience }}
+                    <li>
+                        <strong>{{ .title }}</strong>
+                        <p>{{ .description }}</p>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+
+            <div class="about-section">
+                <h2>Khóa học đã học</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <h3>Java</h3>
+                        <ul>
+                            <li>Java cơ bản và nâng cao (VietJack)</li>
+                            <li>Lập trình Socket trong Java</li>
+                            <li>Xây dựng ứng dụng Client-Server</li>
+                            <li>Lập trình UDP Socket</li>
+                            <li>Java Core - Lập trình hướng đối tượng</li>
+                        </ul>
+                    </div>
+                    <div class="course-card">
+                        <h3>JavaScript / Node.js</h3>
+                        <ul>
+                            <li>JavaScript căn bản</li>
+                            <li>Promise và Async/Await</li>
+                            <li>Event loop & cách JavaScript hoạt động</li>
+                            <li>Node.js - Hướng dẫn cơ bản</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {{ if .Params.certificates }}
+            <div class="about-section">
+                <h2>Chứng chỉ</h2>
+                <div class="image-gallery">
+                    {{ range .Params.certificates }}
+                    <div class="gallery-item">
+                        <img src="{{ .image | relURL }}" 
+                             alt="{{ .title }}" 
+                             class="gallery-image"
+                             loading="lazy">
+                        {{ if .title }}
+                        <p class="gallery-caption">{{ .title }}</p>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+
+            {{ if .Params.projects }}
+            <div class="about-section">
+                <h2>Đồ án</h2>
+                <div class="image-gallery">
+                    {{ range .Params.projects }}
+                    <div class="gallery-item">
+                        <img src="{{ .image | relURL }}" 
+                             alt="{{ .title }}" 
+                             class="gallery-image"
+                             loading="lazy">
+                        {{ if .title }}
+                        <p class="gallery-caption">{{ .title }}</p>
+                        {{ end }}
+                        {{ if .description }}
+                        <p class="gallery-description">{{ .description }}</p>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+
+            <div class="about-section">
+                <h2>Liên hệ</h2>
+                <p>
+                    Bạn có thể tìm thấy tôi trên GitHub:
+                    <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer" class="github-link">
+                        {{ .Site.Params.github }}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
