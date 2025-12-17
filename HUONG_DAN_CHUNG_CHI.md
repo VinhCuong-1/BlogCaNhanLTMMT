@@ -39,7 +39,7 @@ hugo server
 - ✅ Đảm bảo tên file khớp chính xác với đường dẫn trong `_index.md`
 - ✅ File có thể là `.jpg`, `.jpeg`, `.png`, hoặc `.webp`
 - ✅ Nếu file có tên khác, sửa đường dẫn trong `_index.md` cho khớp
-- ✅ Hình ảnh sẽ tự động hiển thị dạng gallery trên trang "Về Tôi"
+- ✅ Hình ảnh sẽ tự động hiển thị dạng gallery trên trang "Trang thông tin cá nhân"
 - ✅ Click vào hình để xem lớn (lightbox)
 
 ## Ví Dụ Nếu File Có Tên Khác

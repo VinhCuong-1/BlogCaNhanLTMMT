@@ -1,5 +1,5 @@
 ---
-title: "Về Tôi"
+title: "Trang thông tin cá nhân"
 date: 2025-12-05
 type: "about"
 experience:
@@ -12,27 +12,31 @@ experience:
   - title: "Lập trình trên thiết bị di động"
     description: "Xây dựng app tích hợp các chức năng như gọi, chuyển đổi đơn vị, đồng hồ báo thức,... app đếm số bước chân, app đặt vé xe."
 certificates:
-  - image: "/images/networking-basics.jpg"
+  - image: "images/networking-basics.jpg"
     title: "Networking Basics"
-  - image: "/images/javascript-essentials-1.jpg"
+  - image: "images/javascript-essentials-1.jpg"
     title: "JavaScript Essentials 1"
-  - image: "/images/javascript-essentials-2.jpg"
+  - image: "images/javascript-essentials-2.jpg"
     title: "JavaScript Essentials 2"
 projects:
-  - image: "/images/đacs.jpg"
+  - image: "images/đacs.jpg"
     title: "Tự động hóa quản lý mạng bằng AI trên GNS3"
     description: "Đồ án sử dụng playbook để tiến hành cấu hình tự động cho router, switch và pc"
-  - image: "/images/final.jpg"
+    github: "https://github.com/VinhCuong-1/DoAnCoSo"
+  - image: "images/final.jpg"
     title: "Tạo video có phụ đề và âm thanh bằng AI trên AWS"
     description: "Chỉnh sửa ngôn ngữ phụ đề và âm thanh cho video tự động bằng các dịch vụ trên AWS"
-  - image: "/images/final.jpg"
-    title: "App đo bước chân"
-    description: "Ứng dụng Android sử dụng ... để đếm số bước chân người dùng"
-  - image: "/images/final.jpg"
+    github: "https://github.com/VinhCuong-1/DoAnChuyenNganh"
+  - image: "images/datve.jpg"
     title: "App đặt vé xe"
-    description: "Ứng dụng cho phép đặt vé xe trên các tuyến cố định từ Bắc vào Nam và ngược lại"        
+    description: "Ứng dụng cho phép đặt vé xe trên các tuyến cố định từ Bắc vào Nam và ngược lại"
+    github: "https://github.com/VinhCuong-1/AppDatVeXe"
+  - image: "images/no-images.jpg"
+    title: "Bảo mật thông tin nâng cao"
+    description: "Các phương thức bảo mật được giảng viên hướng dẫn và thực hành trên lớp"
+    github: "https://github.com/VinhCuong-1/bmtt-nc-hutech-2280600363"        
 ---
 
-# Về Tôi
+# Trang thông tin cá nhân
 
 Xin chào! Tôi là một lập trình viên đam mê về lập trình mạng và phát triển ứng dụng web. Blog này là nơi tôi chia sẻ kiến thức, kinh nghiệm và các bài học về lập trình mạng với Java và JavaScript.

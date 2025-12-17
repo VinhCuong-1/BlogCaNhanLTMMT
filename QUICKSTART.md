@@ -38,7 +38,7 @@ Các file HTML sẽ được tạo trong thư mục `public/`
 
 - **Trang Chủ** (`/`): Giới thiệu và bài viết gần đây
 - **Blog** (`/blog/`): Danh sách 9 bài viết
-- **Về Tôi** (`/about/`): Thông tin cá nhân
+- **Trang thông tin cá nhân** (`/about/`): Thông tin cá nhân
 
 ## Thêm Bài Viết Mới
 

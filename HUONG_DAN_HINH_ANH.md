@@ -38,14 +38,14 @@ content/images/
 2. File sẽ tự động hiển thị trên trang chủ
 3. Nếu không có file, sẽ hiển thị placeholder với chữ cái đầu
 
-### 2. Chứng Chỉ và Đồ Án trên Trang "Về Tôi"
+### 2. Chứng Chỉ và Đồ Án trên Trang "Trang thông tin cá nhân"
 
 Chỉnh sửa file `content/about/_index.md`:
 
 ```yaml
 ---
-title: "Về Tôi"
-date: 2024-01-01
+title: "Trang thông tin cá nhân"
+date: 2025-12-05
 type: "about"
 certificates:
   - image: "/images/certificate-1.jpg"

@@ -4,10 +4,10 @@ Blog cá nhân về lập trình mạng với Java và JavaScript, được xây
 
 ## Tính năng
 
-- ✅ Menu điều hướng: Trang Chủ, Blog, Về Tôi
+- ✅ Menu điều hướng: Trang Chủ, Blog, Trang thông tin cá nhân
 - ✅ Trang chủ với giới thiệu cá nhân và bài viết gần đây
 - ✅ Trang Blog với 9 bài viết về Java và JavaScript
-- ✅ Trang Về Tôi với thông tin chi tiết
+- ✅ Trang Trang thông tin cá nhân với thông tin chi tiết
 - ✅ Thiết kế hiện đại, responsive (mobile-friendly)
 - ✅ SEO tối ưu với meta tags
 - ✅ Syntax highlighting cho code
@@ -70,7 +70,7 @@ LapTrinhMang/
 ├── config.toml          # Cấu hình Hugo
 ├── content/             # Nội dung website
 │   ├── blog/           # Các bài viết blog
-│   └── about/          # Trang về tôi
+│   └── about/          # Trang Trang thông tin cá nhân
 ├── themes/
 │   └── network-blog-theme/  # Theme tùy chỉnh
 │       ├── layouts/    # Templates HTML
